@@ -23,6 +23,7 @@
             <pathelement location="${buildsupport.basedir}/ant-contrib/ant-contrib.jar"/>
         </classpath>
     </taskdef>
+    <import file="gitant/git-tasks.xml"/>
 
     <osfamily property="osfamily"/>
 
