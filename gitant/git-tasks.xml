@@ -29,7 +29,7 @@
 		<sequential>
 				<echo file="GIT_COMMAND_LOG" message="git @{command} &#xa;"
 					append="yes" />
-				<exec executable = "git" dir = "@{dir}">
+				<exec executable = "git" dir = "@{dir}" logerror="true" >
 					<arg value = "@{command}" />
 					<args/>
 				</exec>
@@ -46,6 +46,16 @@
 			</git>
 		</sequential>
 	</macrodef>
+    <macrodef name = "git-export">
+            <attribute name = "revision" />
+            <attribute name = "destinationDirectory" />
+            <sequential>
+              <exec executable = "${buildsupport.basedir}/gitant/git-export.sh"  logerror="true" >
+					<arg value = "@{revision}" />
+					<arg value = "@{destinationDirectory}" />
+				</exec>
+            </sequential>
+        </macrodef>
 
 	<macrodef name = "git-add">
 		<attribute name = "path" />
