@@ -24,17 +24,22 @@
         </classpath>
     </taskdef>
     <import file="gitant/git-tasks.xml"/>
+    <path id="maven-ant-tasks.classpath" path="${buildsupport.basedir}/maven-ant/maven-ant-tasks-2.1.3.jar"/>
+    <!-- Maven ant support -->
+    <typedef resource="org/apache/maven/artifact/ant/antlib.xml"
+             uri="antlib:org.apache.maven.artifact.ant"
+             classpathref="maven-ant-tasks.classpath"/>
 
     <osfamily property="osfamily"/>
 
     <property name="svnant-lib" location="${buildsupport.basedir}/svnant"/>
-	<property name="svnhost" value="pbtech-vc.med.cornell.edu"/>
+    <property name="svnhost" value="pbtech-vc.med.cornell.edu"/>
 
     <path id="svnant.classpath">
-		<fileset dir="${svnant-lib}">
-			<include name="*.jar"/>
-		</fileset>
-	</path>
+        <fileset dir="${svnant-lib}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
     <typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpathref="svnant.classpath"/>
 
     <target name="init">
